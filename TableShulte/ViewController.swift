@@ -22,7 +22,6 @@ class ViewController: UIViewController {
         
     }
     
-    
     //Greate array of numbers and shuffle them
     
     var numbersOfCells = [Int] (1...25).shuffled()
