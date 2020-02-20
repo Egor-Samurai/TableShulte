@@ -9,12 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+    
+    @IBOutlet var cellsButtons: [UIButton]!
+    
+    @IBAction func startButton(_ sender: UIButton) {
+        addNumbersToButtonText(button: cellsButtons, numbers: numbersOfCells)
+        shuffleNumbers()
     }
-
-
+    
+    @IBAction func touchButtons(_ sender: UIButton) {
+        
+    }
+    
+    
+    //Greate array of numbers and shuffle them
+    
+    var numbersOfCells = [Int] (1...25).shuffled()
+    
+    
+    func addNumbersToButtonText(button:[UIButton]!, numbers: [Int] ) {
+        
+        for index in 0..<numbersOfCells.count {
+            button[index].setTitle("\(numbers[index])", for: .normal)
+        }
+        
+    }
+    
+    func shuffleNumbers() {
+        numbersOfCells.shuffle()
+    }
+    
+    
 }
 

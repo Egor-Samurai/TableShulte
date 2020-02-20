@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		744E555F23FDDF6E00F7B76B /* TableShultze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744E555E23FDDF6E00F7B76B /* TableShultze.swift */; };
+		747F886F23F35DE200DDF65C /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747F886E23F35DE200DDF65C /* Cell.swift */; };
 		74D3E09423F3139200DA94FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3E09323F3139200DA94FD /* AppDelegate.swift */; };
 		74D3E09623F3139200DA94FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3E09523F3139200DA94FD /* SceneDelegate.swift */; };
 		74D3E09823F3139200DA94FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D3E09723F3139200DA94FD /* ViewController.swift */; };
@@ -16,7 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		74D3E09023F3139200DA94FD /* TableShulte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableShulte.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		744E555E23FDDF6E00F7B76B /* TableShultze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableShultze.swift; sourceTree = "<group>"; };
+		747F886E23F35DE200DDF65C /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		74D3E09023F3139200DA94FD /* TablesShultz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TablesShultz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D3E09323F3139200DA94FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74D3E09523F3139200DA94FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		74D3E09723F3139200DA94FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +52,7 @@
 		74D3E09123F3139200DA94FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				74D3E09023F3139200DA94FD /* TableShulte.app */,
+				74D3E09023F3139200DA94FD /* TablesShultz.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,6 +64,8 @@
 				74D3E09523F3139200DA94FD /* SceneDelegate.swift */,
 				74D3E09723F3139200DA94FD /* ViewController.swift */,
 				74D3E09923F3139200DA94FD /* Main.storyboard */,
+				744E555E23FDDF6E00F7B76B /* TableShultze.swift */,
+				747F886E23F35DE200DDF65C /* Cell.swift */,
 				74D3E09C23F3139400DA94FD /* Assets.xcassets */,
 				74D3E09E23F3139400DA94FD /* LaunchScreen.storyboard */,
 				74D3E0A123F3139400DA94FD /* Info.plist */,
@@ -84,7 +90,7 @@
 			);
 			name = TableShulte;
 			productName = TableShulte;
-			productReference = 74D3E09023F3139200DA94FD /* TableShulte.app */;
+			productReference = 74D3E09023F3139200DA94FD /* TablesShultz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				74D3E09823F3139200DA94FD /* ViewController.swift in Sources */,
+				747F886F23F35DE200DDF65C /* Cell.swift in Sources */,
 				74D3E09423F3139200DA94FD /* AppDelegate.swift in Sources */,
+				744E555F23FDDF6E00F7B76B /* TableShultze.swift in Sources */,
 				74D3E09623F3139200DA94FD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +299,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackmamba.TableShulte;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TablesShultz;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -308,7 +316,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.blackmamba.TableShulte;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TablesShultz;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
