@@ -13,5 +13,8 @@ struct TableShultze {
     var bestResult = 0
     var time = 0.0
     
+
+    
+    
     
 }
