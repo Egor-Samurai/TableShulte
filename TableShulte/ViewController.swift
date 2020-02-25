@@ -6,6 +6,9 @@
 //  Copyright © 2020 Egor Gurba. All rights reserved.
 //
 
+//MARK: Add
+//timer and high score table
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -14,7 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet var cellsButtons: [UIButton]!
     
     @IBAction func startButton(_ sender: UIButton) {
-        addNumbersToButtonText(button: cellsButtons, numbers: numbersOfCells)
+        updateTable(buttons: cellsButtons, numbers: numbersOfCells)
         shuffleNumbers()
     }
     @IBOutlet weak var counterLabel: UILabel!
@@ -34,11 +37,27 @@ class ViewController: UIViewController {
         WarningLabel.text = "Errors: \(countError)"
         }
     }
+    
+    
+    @IBAction func restartButton(_ sender: UIButton) {
+      updateTable(buttons: cellsButtons, numbers: numbersOfCells)
+
+        for cell in cellsButtons {
+            if cell.isHidden {
+                cell.isHidden = false
+            }
+        }
+        
+        countValueLabel = 0
+        countError = 0
+        count = 1
+    }
+    
     @IBAction func touchButtons(_ sender: UIButton) {
-        //exercise logic
         if sender.currentTitle! == String(count) {
             count += 1
             countValueLabel += 1
+            sender.isHidden = true // hide the button after clicking
         } else {
             countError += 1
         }
@@ -50,10 +69,10 @@ class ViewController: UIViewController {
     var numbersOfCells = [Int] (1...25).shuffled()
     
     //Set the button title
-    func addNumbersToButtonText(button:[UIButton]!, numbers: [Int] ) {
+    func updateTable(buttons:[UIButton]!, numbers: [Int] ) {
         
         for index in 0..<numbersOfCells.count {
-            button[index].setTitle("\(numbers[index])", for: .normal)
+            buttons[index].setTitle("\(numbers[index])", for: .normal)
         }
         
     }
@@ -64,4 +83,3 @@ class ViewController: UIViewController {
 
 
 }
-
