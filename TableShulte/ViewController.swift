@@ -14,8 +14,6 @@ import UIKit
 class ViewController: UIViewController {
     
     
-    
-    
     //MARK: Outlets
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var WarningLabel: UILabel!
@@ -46,6 +44,7 @@ class ViewController: UIViewController {
     
     
     var time = 0
+    var minute = 0
     //timer
     var timer = Timer()
     
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
     @IBAction func restartButton(_ sender: UIButton) {
         updateTable(buttons: cellsButtons, numbers: numbersOfCells.shuffled())
         time = 0
-        timerLabel.text = String(time)
+        timerLabel.text = String("\(minute):\(time)")
         for cell in cellsButtons {
             if cell.isHidden {
                 cell.isHidden = false
@@ -99,7 +98,15 @@ class ViewController: UIViewController {
     
     @objc func action()  {
         time += 1
-        timerLabel.text = String(time)
+        
+        if time > 60 {
+            minute += 1
+            time = 0
+        }
+        
+        
+        
+        timerLabel.text = String("\(minute):\(time)")
     }
     
 }
