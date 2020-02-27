@@ -7,41 +7,62 @@
 //
 
 //MARK: Add
-//timer and high score table
+// high score table
 
 import UIKit
 
 class ViewController: UIViewController {
     
     
-    @IBOutlet var cellsButtons: [UIButton]!
     
-    @IBAction func startButton(_ sender: UIButton) {
-        updateTable(buttons: cellsButtons, numbers: numbersOfCells)
-        shuffleNumbers()
-    }
+    
+    //MARK: Outlets
     @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var WarningLabel: UILabel!
+    @IBOutlet var cellsButtons: [UIButton]!
+    @IBOutlet weak var timerLabel: UILabel!
     
     
     
-   private(set)  var countValueLabel = 0 {
+    //MARK: Counters
+    private(set)  var countValueLabel = 0 {
         didSet {
-            counterLabel.text = "Finded: \(countValueLabel)"
+            counterLabel.text = "Found: \(countValueLabel)"
         }
     }
     
-     var count = 1 // first value (1...25)
+    var count = 1 // first value (1...25)
     var countError = 0 {   // counter errors
         didSet {
-        WarningLabel.text = "Errors: \(countError)"
+            WarningLabel.text = "Errors: \(countError)"
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        timerLabel.isHidden = true
+    }
+    
+    
+    var time = 0
+    //timer
+    var timer = Timer()
+    
+    //MARK: Actions
+    @IBAction func startButton(_ sender: UIButton) {
+        updateTable(buttons: cellsButtons, numbers: numbersOfCells)
+        sender.isHidden = true
+        timerLabel.isHidden = false
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.action), userInfo: nil, repeats: true)
+        
     }
     
     
     @IBAction func restartButton(_ sender: UIButton) {
-      updateTable(buttons: cellsButtons, numbers: numbersOfCells)
-
+        updateTable(buttons: cellsButtons, numbers: numbersOfCells.shuffled())
+        time = 0
+        timerLabel.text = String(time)
         for cell in cellsButtons {
             if cell.isHidden {
                 cell.isHidden = false
@@ -61,9 +82,8 @@ class ViewController: UIViewController {
         } else {
             countError += 1
         }
-       
+        
     }
-    
     
     //Greate array of numbers and shuffle them
     var numbersOfCells = [Int] (1...25).shuffled()
@@ -77,9 +97,9 @@ class ViewController: UIViewController {
         
     }
     
-    func shuffleNumbers() {
-        numbersOfCells.shuffle()
+    @objc func action()  {
+        time += 1
+        timerLabel.text = String(time)
     }
-
-
+    
 }
