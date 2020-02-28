@@ -6,9 +6,6 @@
 //  Copyright © 2020 Egor Gurba. All rights reserved.
 //
 
-//MARK: Add
-// high score table
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -19,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var WarningLabel: UILabel!
     @IBOutlet var cellsButtons: [UIButton]!
     @IBOutlet weak var timerLabel: UILabel!
-    
+    @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var startButtonOutlet: UIButton!
     
     
     //MARK: Counters
@@ -36,32 +34,41 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        disableCells()
         timerLabel.isHidden = true
+        
     }
-    
-    
-    var time = 0
-    var minute = 0
-    //timer
-    var timer = Timer()
     
     //MARK: Actions
     @IBAction func startButton(_ sender: UIButton) {
         updateTable(buttons: cellsButtons, numbers: numbersOfCells)
-        sender.isHidden = true
+        cellsButtons.map({$0.isEnabled = true})
         timerLabel.isHidden = false
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.action), userInfo: nil, repeats: true)
+        sender.isEnabled = false
+    }
+    
+    
+    @IBAction func pauseButtonAction(_ sender: UIButton) {
+        timer.invalidate()
+        disableCells()
         
+        if startButtonOutlet.isEnabled == false {
+            startButtonOutlet.isEnabled = true
+        }
     }
     
     
     @IBAction func restartButton(_ sender: UIButton) {
+        
         updateTable(buttons: cellsButtons, numbers: numbersOfCells.shuffled())
-        time = 0
-        timerLabel.text = String("\(minute):\(time)")
+        minute = 0
+        seconds = 0
+        timerLabel.text = String("\(minute):\(seconds)")
         for cell in cellsButtons {
             if cell.isHidden {
                 cell.isHidden = false
@@ -96,17 +103,31 @@ class ViewController: UIViewController {
         
     }
     
+    
+    //MARK: Timer
+    
+    var timer = Timer()
+    
+    var seconds = 0
+    var minute = 0
+    
     @objc func action()  {
-        time += 1
+        seconds += 1
         
-        if time > 60 {
+        if seconds > 59 {
             minute += 1
-            time = 0
+            seconds = 0
         }
         
         
         
-        timerLabel.text = String("\(minute):\(time)")
+        timerLabel.text = String("\(minute):\(seconds)")
     }
+    
+    func disableCells() { //disable buttons
+        cellsButtons.map({$0.isEnabled = false})
+    }
+    
+    
     
 }
