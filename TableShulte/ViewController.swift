@@ -41,6 +41,11 @@ class ViewController: UIViewController {
         disableCells()
         timerLabel.isHidden = true
         
+        //Gradient
+        let colorOne = UIColor(red: 100 / 255, green: 20 / 255, blue: 61 / 255, alpha: 1.0)
+        let colorTwo = UIColor(red: 243 / 255, green: 155 / 255, blue: 51 / 255, alpha: 1.0)
+        view.setGradientBackgrount(colorOne: colorOne, colorTwo: colorTwo)
+        
     }
     
     //MARK: Actions
@@ -64,7 +69,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func restartButton(_ sender: UIButton) {
-        
+        timer.invalidate()
+        disableCells()
         updateTable(buttons: cellsButtons, numbers: numbersOfCells.shuffled())
         minute = 0
         seconds = 0
